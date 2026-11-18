@@ -21,10 +21,15 @@ const setMeta = (head, attribute, name, content) =>
 
 const baseHead = absolutePaths(extract('<head>', '</head>'))
 
-// Header: name only
+// Header: back to the site + name
 const header = extract('<header>', '</header>')
   .replace(/\s*<button[\s\S]*?<\/button>/g, '')
   .replace('class="main-nav"', 'class="main-nav main-nav--single"')
+  .replace(
+    '<a href="/" class="header__link">',
+    `<a href="/" class="back-link hide-print" aria-label="Retour au site"><span class="icon-arrow icon-arrow--left" aria-hidden="true"></span></a>
+        <a href="/" class="header__link">`
+  )
 
 const resume = extract('<section id="resume"', '</section>')
   .replace(/\s*<li class="resume__link[\s\S]*?<\/li>/, '')
@@ -71,7 +76,7 @@ console.log('cv/index.html generated')
 const job = '<span class="header__job">UX Designer &amp; Développeur Front</span>'
 const notFoundHeader = header.replace(
   job,
-  `<span class="header__job header__job--message hide-print">La page que vous cherchez n'existe plus, voici mon CV</span>
+  `<span class="header__job header__job--message hide-print">La page que vous cherchez n'existe pas mais voici mon CV</span>
             ${job.replace('header__job', 'header__job for-print')}`
 )
 if (notFoundHeader === header) throw new Error('404: job title not found in the header')

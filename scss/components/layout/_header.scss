@@ -33,11 +33,40 @@ header {
       height: $header-small-height;
     }
 
-    // Name only (404 page)
+    // Name only (resume pages)
     &.main-nav--single {
+      position: relative;
+
       @media screen {
         justify-content: center;
+        padding: 0 $header-height;
+
+        @include breakpoint(mobile) {
+          padding: 0 $header-small-height;
+        }
       }
+    }
+  }
+
+  // Back to the site (resume pages)
+  .back-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $header-height;
+    height: 100%;
+
+    @include breakpoint(mobile) {
+      width: $header-small-height;
+      font-size: 0.6em;
+    }
+
+    .icon-arrow {
+      position: relative;
+      left: 5px;
     }
   }
 
