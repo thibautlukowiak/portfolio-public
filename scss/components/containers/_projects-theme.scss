@@ -1,0 +1,73 @@
+@use 'sass:list';
+
+// Projects: number, color, slider color
+$projects: (
+  'corsair': ('01', $color-corsair, $color-corsair-strong),
+  'littlebig': ('02', $color-littlebig, $color-littlebig-strong),
+  'misterfly': ('03', $color-misterfly, $color-misterfly-strong),
+  'tui': ('04', $color-tui, $color-tui-strong),
+  'naturel': ('05', $color-naturel, $color-naturel-strong),
+  'marathon': ('06', $color-marathon, $color-marathon-strong),
+  'artigo': ('07', $color-artigo, $color-artigo-strong),
+  'HM': ('08', $color-hm, $color-hm-strong),
+  'ludo': ('09', $color-ludo, $color-ludo-strong)
+);
+
+.slider--text h3::before,
+.menu__text h3::before {
+  font-family: $font-serif;
+  font-weight: 400;
+  text-shadow: none;
+  position: relative;
+  left: -10px;
+  font-size: 20px;
+}
+
+@each $project, $theme in $projects {
+  .slide[data-project='#{$project}'] h3::before,
+  .menu .bg-#{$project} h3::before {
+    content: list.nth($theme, 1);
+  }
+}
+
+@each $project, $theme in $projects {
+  // Surfaces
+  .bg-#{$project},
+  .details.bg-#{$project} > * {
+    background-color: list.nth($theme, 2);
+  }
+
+  // Home slider
+  .slide[data-project='#{$project}']::before,
+  .slide[data-project='#{$project}'] .btn::before {
+    background-color: list.nth($theme, 3);
+  }
+
+  // Links
+  .project[data-project='#{$project}'] .btn::before {
+    background-color: color-mix(in srgb, #{list.nth($theme, 2)} 30%, #{$color-bg});
+  }
+}
+
+// Links on a project color
+.project .bg-corsair .btn::before {
+  background-color: $color-black;
+}
+
+// Header and footer: color of the current project (not on the resume)
+@each $project, $theme in $projects {
+  body[data-project='#{$project}'] {
+    --color-current: #{list.nth($theme, 3)};
+  }
+}
+
+body[data-project]:not(.resume-display) {
+  header nav,
+  footer button,
+  .theme-switch,
+  .print-button {
+    --color-text: #{$color-white};
+    --color-overlay: color-mix(in srgb, var(--color-current) #{$project-opacity * 100%}, transparent);
+    color: $color-text;
+  }
+}

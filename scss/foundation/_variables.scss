@@ -1,0 +1,125 @@
+//
+// FONT
+//
+
+// Font-families
+$font-sans: 'Montserrat', sans-serif;
+$font-serif: 'Playfair Display', serif;
+
+// Font-sizes
+$text-1: 1.875em;
+$text-2: 1.75em;
+$text-3: 1.25em;
+$text-4: 0.875em;
+$text-5: 0.75em;
+
+//
+// COLORS
+//
+
+// Theme (inverted in dark mode)
+$color-text: var(--color-text);
+$color-bg: var(--color-bg);
+$color-overlay: var(--color-overlay);
+$color-on-project: var(--color-on-project);
+
+// Grayscale (fixed)
+$color-black: var(--color-black);
+$color-white: white;
+// Grey (resume)
+$color-grey: #666666;
+
+// Projects (adapted to the theme)
+$color-corsair: var(--color-corsair);
+$color-littlebig: var(--color-littlebig);
+$color-misterfly: var(--color-misterfly);
+$color-tui: var(--color-tui);
+$color-naturel: var(--color-naturel);
+$color-marathon: var(--color-marathon);
+$color-artigo: var(--color-artigo);
+$color-hm: var(--color-hm);
+$color-ludo: var(--color-ludo);
+
+// Projects (home slider)
+$color-corsair-strong: #06434f;
+$color-littlebig-strong: #3d6af0;
+$color-misterfly-strong: #bf5700;
+$color-tui-strong: #28716c;
+$color-naturel-strong: #9a8520;
+$color-marathon-strong: #d02c6b;
+$color-artigo-strong: #2b2d2c;
+$color-hm-strong: #c84b2d;
+$color-ludo-strong: #4e7d6f;
+
+//
+// SIZE & STYLE
+//
+
+// Gutters
+$gutter-smaller: 10px;
+$gutter-small: 20px;
+$gutter-medium: 40px;
+$gutter: 50px;
+$gutter-large: 60px;
+$gutter-larger: 100px;
+$gutter-largest: 200px;
+
+// Breakpoints
+$breakpoint-laptop: 1024px;
+$breakpoint-tablet: 1023px;
+$breakpoint-mobile: 767px;
+$breakpoint-menu: 1280px;
+
+// Elements size
+// Print
+$print-space: 13px;
+$print-space-large: 20px;
+$print-space-separator: 26px;
+
+$header-height: 100px;
+$header-small-height: 60px;
+$icon-size: 1.875em;
+$icon-size-large: 2.25em;
+$icon-arrow-size: 1.6em;
+// Project color opacity
+$project-opacity: 0.85;
+
+$slider-title-max: 120px;
+$slider-title-spacing-max: 15px;
+
+// Shadows
+$shadow-title:
+  rgba(0, 0, 0, 0.03) 2px 2px,
+  rgba(0, 0, 0, 0.0285) 4px 4px,
+  rgba(0, 0, 0, 0.027) 6px 6px,
+  rgba(0, 0, 0, 0.0255) 8px 8px,
+  rgba(0, 0, 0, 0.024) 10px 10px,
+  rgba(0, 0, 0, 0.0225) 12px 12px,
+  rgba(0, 0, 0, 0.021) 14px 14px,
+  rgba(0, 0, 0, 0.0195) 16px 16px,
+  rgba(0, 0, 0, 0.018) 18px 18px,
+  rgba(0, 0, 0, 0.0165) 20px 20px,
+  rgba(0, 0, 0, 0.015) 22px 22px,
+  rgba(0, 0, 0, 0.0135) 24px 24px,
+  rgba(0, 0, 0, 0.012) 26px 26px,
+  rgba(0, 0, 0, 0.0105) 28px 28px,
+  rgba(0, 0, 0, 0.009) 30px 30px,
+  rgba(0, 0, 0, 0.0075) 32px 32px,
+  rgba(0, 0, 0, 0.006) 34px 34px,
+  rgba(0, 0, 0, 0.0045) 36px 36px,
+  rgba(0, 0, 0, 0.003) 38px 38px,
+  rgba(0, 0, 0, 0.0015) 40px 40px;
+
+// Transition
+$transition-timer-fast: 0.3s;
+$transition-timer-medium: 0.5s;
+$transition-timer: 1s;
+$transition-timer-slow: 2s;
+$transition-fast: ease $transition-timer-fast;
+$transition-medium: ease $transition-timer-medium;
+$transition: ease $transition-timer;
+$transition-slow: ease $transition-timer-slow;
+
+// Colors
+$transition-theme-timer: $transition-timer;
+$transition-theme: ease $transition-theme-timer;

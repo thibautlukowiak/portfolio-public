@@ -1,0 +1,5 @@
+.project[data-project='ludo'] figcaption {
+  @include breakpoint(mobile) {
+    margin-top: $gutter-small;
+  }
+}

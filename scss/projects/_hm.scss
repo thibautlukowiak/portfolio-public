@@ -1,0 +1,60 @@
+$scroll-gradient-height: 250px;
+
+.project[data-project='HM'] figure > img {
+  border: 1px solid #efeeec;
+}
+
+.scroll-container {
+  padding-bottom: $scroll-gradient-height;
+  position: relative;
+  overflow: hidden;
+
+  // Overridden by .figure padding (same element)
+  &.figure {
+    @include breakpoint(laptop) {
+      padding-bottom: $gutter-medium;
+    }
+
+    @include breakpoint(mobile) {
+      padding-bottom: $gutter-small;
+    }
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: $scroll-gradient-height;
+    width: 100%;
+    background: linear-gradient(to bottom, transparent 0%, $color-bg 75%);
+  }
+}
+
+.scroll {
+  position: relative;
+
+  > img {
+    pointer-events: none;
+    position: relative;
+    z-index: 1;
+  }
+
+  > div {
+    position: absolute;
+    top: 0;
+    overflow: auto;
+    bottom: -$scroll-gradient-height;
+    left: 0;
+
+    &:first-of-type {
+      left: 0;
+      width: 67%;
+    }
+
+    &:last-of-type {
+      left: 66.67%;
+      width: 33%;
+    }
+  }
+}

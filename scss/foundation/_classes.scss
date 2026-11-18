@@ -1,0 +1,23 @@
+// Blocks
+.align-bottom {
+  vertical-align: bottom;
+}
+
+// Bg & colors
+[class^='bg-'] {
+  color: $color-on-project;
+}
+
+.border {
+  border: 20px solid $color-white;
+}
+
+::selection {
+  background-color: $color-text;
+  color: $color-bg;
+}
+
+// Display
+.for-print {
+  display: none;
+}

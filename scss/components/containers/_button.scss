@@ -1,0 +1,27 @@
+.btn {
+  position: relative;
+  text-decoration: none;
+  z-index: 0;
+  padding: $gutter-smaller;
+  display: inline-block;
+
+  &::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: $color-bg;
+    transform: scale3d(1, 0, 1);
+    transform-origin: 50% 100%;
+    transition: transform $transition-timer-fast;
+  }
+
+
+  &:hover::before,
+  &:focus::before {
+    @include button-hover;
+  }
+}

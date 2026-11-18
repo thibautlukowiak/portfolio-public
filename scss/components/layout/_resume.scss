@@ -1,0 +1,104 @@
+.resume {
+  $this: &;
+
+  background-color: $color-bg;
+
+  li .x-small {
+    margin-top: 0.25em;
+  }
+
+  .big-margin > li + li {
+    margin-top: 2em;
+  }
+
+  ul {
+    margin-top: 2em;
+  }
+
+  ol p {
+    margin-top: 0.5em;
+  }
+
+  p,
+  &__stack {
+    line-height: 1.35em;
+    max-width: 640px;
+  }
+
+  // Dotted lines
+  &__separator {
+    border: none;
+    border-top: 1px dashed $color-grey;
+    margin: 0 $gutter-largest;
+
+    @include breakpoint(laptop) {
+      margin: 0 $gutter-large;
+    }
+
+    @include breakpoint(mobile) {
+      margin: 0 $gutter-medium $gutter-medium;
+    }
+
+    // Mobile only
+    &--mobile {
+      display: none;
+
+      @include breakpoint(mobile) {
+        display: block;
+        margin: $gutter-medium 0;
+
+        &:first-child {
+          margin-top: 0;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  // Skills
+  &__skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+
+    li + li {
+      margin-top: 0;
+    }
+  }
+
+  &__contact li + li {
+    margin-top: 0.5em;
+  }
+
+  &__left {
+    width: 40%;
+  }
+
+  &__right {
+    width: 60%;
+  }
+
+  &__left,
+  &__right {
+    @include breakpoint(mobile) {
+      width: 100%;
+    }
+  }
+
+  &__stack li {
+    display: inline-block;
+    font-style: italic;
+
+    + li {
+      margin-top: 0;
+    }
+  }
+
+  li > #{$this}__title,
+  li > #{$this}__date {
+    display: inline;
+  }
+}

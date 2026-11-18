@@ -1,0 +1,45 @@
+// Breakpoints
+@mixin breakpoint($breakpoint) {
+  @if $breakpoint == laptop {
+    @media screen and (max-width: $breakpoint-laptop) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == tablet {
+    @media screen and (max-width: $breakpoint-tablet) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == mobile {
+    @media screen and (max-width: $breakpoint-mobile) {
+      @content;
+    }
+  }
+}
+
+// Dark mode (auto or forced by the theme switch)
+@mixin dark-mode {
+  @media screen and (prefers-color-scheme: dark) {
+    :root:not([data-theme='light']) & {
+      @content;
+    }
+  }
+
+  @media screen {
+    :root[data-theme='dark'] & {
+      @content;
+    }
+  }
+}
+
+// Elements
+@mixin button-hover {
+  transform: scale3d(1, 1, 1);
+  transform-origin: 50% 0%;
+}
+
+@mixin hidden-text {
+  text-indent: -9999px;
+}

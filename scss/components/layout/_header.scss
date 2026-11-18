@@ -1,0 +1,93 @@
+header,
+footer {
+  position: fixed;
+  z-index: 2;
+
+  @include breakpoint(mobile) {
+    font-size: 0.6em;
+  }
+}
+
+header {
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  a {
+    text-decoration: none;
+  }
+
+  // Resume button | name | menu button
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    height: $header-height;
+    background-color: $color-overlay;
+    transition:
+      height $transition,
+      background-color $transition-theme;
+
+    @include breakpoint(mobile) {
+      height: $header-small-height;
+    }
+
+    // Name only (404 page)
+    &.main-nav--single {
+      @media screen {
+        justify-content: center;
+      }
+    }
+  }
+
+  a {
+    line-height: normal;
+  }
+}
+
+footer {
+  right: 0;
+  bottom: 0;
+  transition: bottom $transition-medium;
+  transition-delay: $transition-timer-medium;
+
+  nav {
+    display: flex;
+  }
+
+  button {
+    background-color: $color-overlay;
+
+    &:first-child {
+      position: relative;
+      left: -1px;
+    }
+
+    .icon-arrow {
+      position: relative;
+    }
+
+    &:first-child .icon-arrow {
+      left: 5px;
+    }
+
+    &:last-child .icon-arrow {
+      left: -5px;
+    }
+  }
+}
+
+nav button {
+  width: $header-height;
+  height: $header-height;
+  transition:
+    height $transition,
+    width $transition,
+    background-color $transition-theme;
+
+  @include breakpoint(mobile) {
+    width: $header-small-height;
+    height: $header-small-height;
+  }
+}

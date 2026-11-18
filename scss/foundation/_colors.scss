@@ -1,0 +1,57 @@
+//
+// COLORS
+//
+:root {
+  color-scheme: light dark;
+
+  // Theme
+  --color-text: #222523;
+  --color-bg: #ffffff;
+  --color-overlay: rgba(255, 255, 255, 0.85);
+  --color-on-project: #ffffff;
+
+  // Fixed
+  --color-black: #222523;
+
+  // Projects
+  --color-corsair: #06434f;
+  --color-littlebig: #3d6af0;
+  --color-misterfly: #bf5700;
+  --color-tui: #28716c;
+  --color-naturel: #9a8520;
+  --color-marathon: #d02c6b;
+  --color-artigo: #2b2d2c;
+  --color-hm: #c84b2d;
+  --color-ludo: #4e7d6f;
+
+  // TUI brands
+  --color-marmara: #ae6100;
+  --color-pdi: #007f9b;
+  --color-pdi-end: #007da6;
+  --color-blog: #333f4f;
+  --color-tuiblue: #157ea5;
+}
+
+// DARK MODE (screen only)
+@mixin dark-tokens {
+  color-scheme: dark;
+  --color-text: #f2f2f0;
+  --color-bg: #1b1d1c;
+  --color-overlay: rgba(27, 29, 28, 0.85);
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    @include dark-tokens;
+  }
+}
+
+@media screen {
+  :root[data-theme='dark'] {
+    @include dark-tokens;
+  }
+
+  :root[data-theme='light'] {
+    color-scheme: light;
+  }
+}

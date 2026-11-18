@@ -1,0 +1,21 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Thibaut Lukowiak portfolio",
+  "scripts": {
+    "build": "npm run build:html && npm run build:css && npm run build:js && npm run build:resume",
+    "build:css": "sass scss/main.scss scss/main.min.css --style=compressed --no-source-map --silence-deprecation=import",
+    "build:js": "esbuild js/src/main.js --bundle --minify --target=es2018 --outfile=js/main.min.js",
+    "build:html": "node js/build-html.js",
+    "build:resume": "node js/build-resume.js",
+    "watch:css": "sass scss/main.scss scss/main.min.css --style=compressed --watch --silence-deprecation=import",
+    "watch:js": "esbuild js/src/main.js --bundle --minify --target=es2018 --outfile=js/main.min.js --watch",
+    "watch:html": "node --watch-path=html js/build-html.js"
+  },
+  "devDependencies": {
+    "esbuild": "^0.24.0",
+    "sass": "1.80.6",
+    "swiper": "^11.1.14"
+  }
+}

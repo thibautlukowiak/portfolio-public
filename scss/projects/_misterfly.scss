@@ -1,0 +1,35 @@
+[data-project='misterfly'].js-active {
+  cursor: url('../img/misterfly/cursor--secondary.png'), auto;
+
+  .bg-misterfly {
+    cursor: url('../img/misterfly/cursor.png'), auto;
+  }
+}
+
+.loading-bar {
+  height: 4px;
+  background-color: #ffd7c5;
+  position: relative;
+  opacity: 0;
+  transition: opacity $transition-fast;
+  margin-bottom: $gutter-smaller;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0%;
+    background-color: #fe6018;
+    transition: width ease 8s;
+  }
+
+  &.js-active {
+    opacity: 1;
+
+    &::before {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,157 @@
+// Theme switch (resume only)
+.theme-switch {
+  position: fixed;
+  z-index: 2;
+  right: 0;
+  bottom: -$header-height;
+  width: $header-height;
+  height: $header-height;
+  color: $color-text;
+  background-color: $color-overlay;
+  transition:
+    bottom $transition-medium $transition-timer-medium,
+    height $transition,
+    width $transition,
+    background-color $transition-theme;
+
+  @include breakpoint(mobile) {
+    width: $header-small-height;
+    height: $header-small-height;
+    font-size: 0.6em;
+  }
+
+  .resume-display & {
+    bottom: 0;
+  }
+}
+
+// Theme change transition (theme.js)
+:root {
+  --transition-theme-timer: #{$transition-theme-timer};
+}
+
+// Text color: only on the elements that set it, not on the icon
+$theme-color-owners: 'body, .theme-switch, .print-button, .sticker, .skip-link';
+
+.theme-switching {
+  &,
+  :not(.icon-theme, .icon-theme *, #{$theme-color-owners}),
+  :not(.icon-theme, .icon-theme *)::before,
+  :not(.icon-theme, .icon-theme *)::after {
+    transition:
+      background-color $transition-theme,
+      border-color $transition-theme !important; // overwrite transitions
+  }
+
+  :is(#{$theme-color-owners}) {
+    transition:
+      background-color $transition-theme,
+      color $transition-theme,
+      border-color $transition-theme !important;
+  }
+}
+
+// Icon: moon (light) / sun (dark)
+$theme-icon-size: $icon-size-large;
+$moon-size: 1.5em;
+
+.icon-theme {
+  $this: &;
+
+  position: relative;
+  display: inline-block;
+  width: $theme-icon-size;
+  height: $theme-icon-size;
+  vertical-align: middle;
+
+  &__sun,
+  &__moon {
+    position: absolute;
+    transition:
+      opacity $transition-fast,
+      transform $transition-medium;
+  }
+
+  // Sun
+  &__sun {
+    inset: 0;
+    -webkit-mask: radial-gradient(closest-side, transparent 66%, #000 67%);
+    mask: radial-gradient(closest-side, transparent 66%, #000 67%);
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.5);
+
+    &,
+    &::before {
+      background:
+        $line center / 1px 100% no-repeat,
+        $line center / 100% 1px no-repeat;
+    }
+
+    &::before {
+      position: absolute;
+      inset: 0;
+      transform: rotate(45deg);
+    }
+  }
+
+  &::after {
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    width: 40%;
+    height: 40%;
+    border: 1px solid;
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(0.5);
+    transition:
+      opacity $transition-fast,
+      transform $transition-medium;
+  }
+
+  // Moon
+  &__moon {
+    top: 50%;
+    left: 50%;
+    width: $moon-size;
+    height: $moon-size;
+    margin: ($moon-size * -0.5) 0 0 ($moon-size * -0.5);
+    transform: rotate(-15deg);
+
+    &::before,
+    &::after {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border: 1px solid;
+      border-radius: 50%;
+    }
+
+    &::before {
+      top: 0;
+      left: 0;
+      -webkit-mask: radial-gradient(circle ($moon-size * 0.5) at 85% 25%, transparent 99%, #000 100%);
+      mask: radial-gradient(circle ($moon-size * 0.5) at 85% 25%, transparent 99%, #000 100%);
+    }
+
+    &::after {
+      top: -25%;
+      left: 35%;
+      -webkit-mask: radial-gradient(circle ($moon-size * 0.5) at 15% 75%, #000 99%, transparent 100%);
+      mask: radial-gradient(circle ($moon-size * 0.5) at 15% 75%, #000 99%, transparent 100%);
+    }
+  }
+
+  @include dark-mode {
+    #{$this}__sun,
+    &::after {
+      opacity: 1;
+      transform: none;
+    }
+
+    #{$this}__moon {
+      opacity: 0;
+      transform: rotate(75deg) scale(0.5);
+    }
+  }
+}

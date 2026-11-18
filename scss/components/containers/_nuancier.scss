@@ -1,0 +1,10 @@
+.nuancier > li {
+  width: 25%;
+  @include hidden-text;
+
+  &::after {
+    content: '';
+    display: block;
+    padding-bottom: 100%;
+  }
+}

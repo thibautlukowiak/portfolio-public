@@ -1,0 +1,30 @@
+// Print button
+.print-button {
+  position: fixed;
+  z-index: 2;
+  left: 0;
+  bottom: 0;
+  width: $header-height;
+  height: $header-height;
+  color: $color-text;
+  background-color: $color-overlay;
+  transition:
+    bottom $transition-medium $transition-timer-medium,
+    height $transition,
+    width $transition,
+    background-color $transition-theme;
+
+  @include breakpoint(mobile) {
+    display: none;
+  }
+
+  .menu-display & {
+    bottom: -$header-height;
+  }
+
+  body[class*='project-'] & {
+    width: $header-small-height;
+    height: $header-small-height;
+    font-size: 0.75em;
+  }
+}

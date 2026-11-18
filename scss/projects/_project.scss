@@ -1,0 +1,151 @@
+.projects {
+  position: relative;
+  top: 100vh;
+  transition: top $transition;
+}
+
+.project {
+  position: relative;
+  background-color: $color-bg;
+  display: none;
+  overflow: hidden;
+
+  &.js-active {
+    display: block;
+  }
+
+  .txt > *:last-child {
+    padding-left: 0;
+  }
+}
+
+.details__list {
+  text-align: right;
+  padding-right: $gutter-larger;
+
+  .details__values li {
+    margin: 0;
+  }
+
+  @include breakpoint(laptop) {
+    padding-right: $gutter-large;
+  }
+
+  @include breakpoint(mobile) {
+    text-align: left;
+    column-count: 2;
+    column-gap: $gutter-small;
+  }
+}
+
+.project {
+  .link-container {
+    padding: $gutter $gutter-largest;
+    text-align: right;
+
+    @include breakpoint(mobile) {
+      padding: $gutter-small $gutter-medium;
+      text-align: left;
+    }
+  }
+
+  > .txt-center {
+    padding: $gutter 0;
+
+    @include breakpoint(mobile) {
+      padding-top: $gutter-medium;
+    }
+  }
+
+  // Lazy load
+  img {
+    opacity: 0;
+    position: relative;
+    top: $gutter-larger;
+    min-height: 100vh;
+    transition:
+      opacity $transition,
+      top $transition;
+
+    &.loaded {
+      opacity: 1;
+      top: 0;
+      min-height: inherit;
+    }
+  }
+}
+
+// Mobile display
+.dual {
+  position: relative;
+  overflow: hidden;
+
+  .half figure {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .half img {
+    @include breakpoint(mobile) {
+      display: none;
+    }
+  }
+
+  .half figcaption {
+    @include breakpoint(mobile) {
+      margin-bottom: 0;
+    }
+  }
+
+  &__mobile {
+    padding: 0;
+    position: absolute;
+    left: 50%;
+    top: 300px;
+    margin-left: -270px;
+
+    @include breakpoint(mobile) {
+      position: relative;
+      top: 0 !important; // for all dual__mobile
+      left: 0;
+      margin-left: 0;
+    }
+  }
+
+  &--top &__mobile {
+    top: 600px;
+  }
+}
+
+.mobile {
+  position: relative;
+  padding: 0;
+  height: 480px;
+  width: 320px;
+
+  @include breakpoint(mobile) {
+    padding: $gutter-small $gutter-medium;
+    margin: 0 auto;
+    height: 100%;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    background: black;
+    top: -70px;
+    left: -10px;
+    right: -10px;
+    bottom: -60px;
+    border-radius: 40px;
+    box-shadow: 20px 20px 0 0 rgba(143, 143, 143, 0.5);
+
+    @include breakpoint(mobile) {
+      display: none;
+    }
+  }
+
+  &--white::before {
+    background-color: $color-white;
+  }
+}

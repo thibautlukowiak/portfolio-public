@@ -1,0 +1,28 @@
+.project[data-project='artigo'] > .txt-center {
+  padding-bottom: 0;
+}
+
+// White background (hands)
+.hand-container {
+  font-size: 0;
+  background-color: $color-white;
+}
+
+.hand {
+  width: 183px;
+  height: 400px;
+  overflow: hidden;
+  background-image: url(../img/artigo/hand-left.webp);
+  background-position: 0 0;
+  display: inline-block;
+
+  + .hand {
+    background-image: url(../img/artigo/hand-right.webp);
+  }
+}
+
+// Tagline: white in both modes
+.project[data-project='artigo'] > .txt-center {
+  color: $color-black;
+  background-color: $color-white;
+}

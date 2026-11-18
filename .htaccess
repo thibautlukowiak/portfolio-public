@@ -1,0 +1,17 @@
+RewriteEngine On
+RewriteCond %{ENV:HTTPS} !on
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# No directory listing
+Options -Indexes
+
+# Unknown or forbidden page: the resume
+ErrorDocument 404 /404.html
+ErrorDocument 403 /404.html
+
+# Event pages for TUI Group: online but not indexed by search engines
+<IfModule mod_headers.c>
+  <If "%{REQUEST_URI} =~ m#^/other/#">
+    Header set X-Robots-Tag "noindex, nofollow"
+  </If>
+</IfModule>

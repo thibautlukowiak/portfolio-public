@@ -1,0 +1,34 @@
+.bg-marmara {
+  background-color: var(--color-marmara);
+}
+
+.bg-pdi {
+  background-color: var(--color-pdi);
+  background-image: linear-gradient(180deg, var(--color-pdi) 50%, var(--color-pdi-end) 100%);
+}
+
+.bg-blog {
+  background-color: var(--color-blog);
+
+  img + img {
+    margin-top: $gutter;
+  }
+}
+
+.bg-tuiblue {
+  background-color: var(--color-tuiblue);
+  padding-bottom: 600px;
+
+  @include breakpoint(mobile) {
+    padding-bottom: 0;
+  }
+}
+
+// Links on a project color
+.project .bg-tuiblue .btn::before {
+  background-color: $color-black;
+}
+
+.btn--tui::before {
+  background-color: color-mix(in srgb, var(--color-tuiblue) 30%, #{$color-bg}) !important; // overwrite btn
+}

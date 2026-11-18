@@ -1,0 +1,89 @@
+.txt,
+.col {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+
+  @include breakpoint(tablet) {
+    font-size: 0.85em;
+  }
+}
+
+.col {
+  > * {
+    display: table-cell;
+    vertical-align: top;
+  }
+
+  &--middle > * {
+    vertical-align: middle;
+  }
+
+  &--pad {
+    padding: 0 $gutter;
+
+    + .col {
+      padding-top: $gutter;
+    }
+
+    > * {
+      padding: 0 $gutter;
+    }
+  }
+}
+
+.txt {
+  > * {
+    width: 50%;
+    padding: $gutter;
+    display: table-cell;
+
+    @include breakpoint(laptop) {
+      padding: $gutter-medium;
+    }
+
+    @include breakpoint(mobile) {
+      width: 100%;
+      padding: $gutter-medium !important; // for txt columns
+    }
+
+    &:first-child {
+      padding-left: $gutter-largest;
+
+      @include breakpoint(laptop) {
+        padding-left: $gutter-large;
+      }
+
+      @include breakpoint(mobile) {
+        padding-left: $gutter-medium !important; // for txt columns
+      }
+    }
+
+    &:last-child {
+      padding-right: $gutter-largest;
+
+      @include breakpoint(laptop) {
+        padding-right: $gutter-large;
+      }
+
+      @include breakpoint(mobile) {
+        display: table-caption;
+        padding-bottom: 0 !important; // for txt columns
+      }
+    }
+  }
+
+  ~ .txt > *:last-child {
+    @include breakpoint(mobile) {
+      padding-top: 0 !important; // for txt columns
+    }
+  }
+
+  li > * {
+    display: block;
+  }
+
+  li + li {
+    margin-top: 1em;
+  }
+}

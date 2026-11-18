@@ -1,0 +1,101 @@
+// Common menu & resume
+.menu,
+.resume {
+  position: absolute;
+  top: -100vh;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  transition:
+    top $transition,
+    opacity $transition;
+}
+
+.menu {
+  // Tiles: 4 x 2, 2 x 4, 1 column on mobile
+  > ul {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__container {
+    color: $color-on-project;
+    height: calc((100vh - #{$header-height}) / 2);
+    line-height: calc((100vh - #{$header-height}) / 2);
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+    width: 25%;
+
+    @media screen and (max-width: $breakpoint-menu) {
+      width: 50%;
+      height: calc((100vh - #{$header-height}) / 4);
+      line-height: calc((100vh - #{$header-height}) / 4);
+    }
+
+    @include breakpoint(mobile) {
+      width: 100%;
+      height: auto;
+      line-height: inherit;
+    }
+
+    button {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      color: inherit;
+      @include hidden-text;
+
+      // Inside the tile (overflow hidden)
+      &:focus-visible {
+        outline-width: 3px;
+        outline-offset: -8px;
+      }
+
+      span {
+        position: absolute;
+        // Larger for the tilt
+        top: -15%;
+        left: -15%;
+        width: 130%;
+        height: 130%;
+        background-size: cover;
+        background-position: center center;
+        opacity: 0;
+        transition: opacity $transition;
+      }
+
+      &:hover span,
+      &:focus span {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__text {
+    color: inherit;
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+    line-height: normal;
+    position: relative;
+    top: 0;
+    z-index: 1;
+    pointer-events: none;
+    transition: top $transition-slow;
+    padding: $gutter;
+
+    h3 {
+      font-weight: 700;
+      font-size: 2em;
+    }
+
+    h4 {
+      font-family: $font-serif;
+      font-size: $text-3;
+      text-align: right;
+    }
+  }
+}

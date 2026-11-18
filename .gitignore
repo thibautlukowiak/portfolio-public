@@ -1,0 +1,37 @@
+# Système
+.DS_Store
+Thumbs.db
+
+# Images et visuels (non publiés sur le dépôt public)
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+*.avif
+*.svg
+*.ico
+*.psd
+*.ai
+*.sketch
+*.fig
+*.mp4
+*.webm
+
+# Polices propriétaires (ex. TUI)
+*.woff
+*.woff2
+*.ttf
+*.otf
+
+# Outillage (pour la suite : Vite / SCSS)
+node_modules/
+dist/
+.env
+*.log
+
+# Autres sites et projets clients (non publiés)
+other/
+
+# Sass source maps
+*.map
