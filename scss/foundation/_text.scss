@@ -112,3 +112,8 @@ strong,
     line-height: 1.35em;
   }
 }
+
+// No line break
+.nowrap {
+  white-space: nowrap;
+}

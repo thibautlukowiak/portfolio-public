@@ -102,3 +102,14 @@
     display: inline;
   }
 }
+
+// Company line of each experience
+.resume__company {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 0.9em;
+
+  @media print {
+    color: $color-grey;
+  }
+}
