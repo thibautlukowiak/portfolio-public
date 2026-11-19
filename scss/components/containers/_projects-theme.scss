@@ -20,7 +20,7 @@ $projects: (
   text-shadow: none;
   position: relative;
   left: -10px;
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 
 @each $project, $theme in $projects {
