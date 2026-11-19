@@ -13,6 +13,39 @@ header {
   left: 0;
   width: 100%;
 
+  // Project colors on the resume (as on the LinkedIn banner)
+  &::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: $header-stripe-height;
+    background: linear-gradient(
+      to right,
+      $color-corsair-strong 0 12.5%,
+      $color-littlebig-strong 0 25%,
+      $color-misterfly-strong 0 37.5%,
+      $color-tui-strong 0 50%,
+      $color-naturel-strong 0 62.5%,
+      $color-marathon-strong 0 75%,
+      $color-artigo-strong 0 87.5%,
+      $color-hm-strong 0 100%
+    );
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity $transition;
+
+    // Resume only (also /cv/ and 404)
+    .resume-display & {
+      opacity: $project-opacity;
+    }
+
+    @media print {
+      display: none;
+    }
+  }
+
   a {
     text-decoration: none;
   }
