@@ -43,6 +43,11 @@ $projects: (
     background-color: list.nth($theme, 3);
   }
 
+  // Stickers in the details
+  .details.bg-#{$project} .sticker {
+    color: list.nth($theme, 2);
+  }
+
   // Links
   .project[data-project='#{$project}'] .btn::before {
     background-color: color-mix(in srgb, #{list.nth($theme, 2)} 30%, #{$color-bg});
